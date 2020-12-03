@@ -1,0 +1,15 @@
+on: [push, pull_request]
+
+jobs:
+  linux-build:
+    name: Build on Ubuntu
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+    - run: pip install PyQt5
+    - name: Build
+      run: |
+        cd ./my_package
+        sh build.sh
+        cd ...
